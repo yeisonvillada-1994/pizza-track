@@ -1,101 +1,171 @@
-# 🍕 Pizza-Track — Sistema de Gestión de Pedidos
+# 🍕 Pizza-Track
 
-Sistema de gestión de pedidos de pizzería implementado en Java como actividad académica.
-Simula las operaciones **Registrar**, **Deshacer (Undo)** y **Rehacer (Redo)** usando
-dos pilas manuales basadas en listas ligadas.
+## Descripción del proyecto
 
----
+Pizza-Track es un programa realizado en Java que permite gestionar pedidos de pizza usando una estructura de datos tipo **Pila (Stack)** implementada manualmente mediante una **lista ligada**, sin usar `java.util.Stack`.
 
-## 📋 Objetivo
+El sistema permite registrar pedidos, deshacer pedidos eliminados temporalmente, rehacer pedidos recuperados y mostrar el pedido actual.
 
-Implementar un sistema en Java que gestione pedidos de pizza mediante:
-
-- **Dos pilas manuales** (sin `java.util.Stack`) basadas en **listas ligadas con nodos**.
-- Operaciones `push()`, `pop()`, `peek()` e `isEmpty()` implementadas desde cero.
-- Un menú interactivo en consola con las operaciones Registrar, Undo, Redo y Mostrar.
+Este proyecto fue desarrollado como práctica para aplicar conceptos de programación orientada a objetos, arreglos, pilas y listas ligadas en Java.
 
 ---
 
-## 🗂️ Estructura del Proyecto
+## 🎯 Objetivo del proyecto
 
-```
-java/
-│
-├── Pizza.java          → Modelo de datos: nombre + arreglo fijo de 3 ingredientes
-├── Nodo.java           → Nodo de la lista ligada (puntero siguiente)
-├── PilaManual.java     → Implementación de pila con lista ligada
-├── GestionPedidos.java → Coordina las dos pilas (Undo/Redo)
-└── Main.java           → Menú interactivo en consola (punto de entrada)
-```
+El objetivo de este proyecto es implementar un sistema de gestión de pedidos de pizzas usando una **pila manual**, aplicando conceptos como:
+
+- Clases y objetos
+- Arreglos
+- Listas ligadas
+- Pilas (Stack)
+- Métodos
+- Constructores
+- Encapsulamiento
+- Manejo de datos en consola
+
+Además, el proyecto busca comprender el funcionamiento de las operaciones:
+
+- **Push** → Agregar un pedido
+- **Pop** → Eliminar un pedido
+- **Peek** → Ver el pedido actual
+- **Undo** → Deshacer pedido
+- **Redo** → Rehacer pedido
 
 ---
 
-## ▶️ Instrucciones de Ejecución
+## ⚙️ Funcionalidades del sistema
 
-### Requisitos
-- Tener instalado [Java JDK](https://www.oracle.com/java/technologies/downloads/) (versión 8 o superior)
-- Verificar instalación: `java -version` en la terminal
+El programa cuenta con las siguientes opciones:
 
-### Pasos
+### 1. Registrar Pizza
+Permite ingresar el nombre de una pizza y sus 3 ingredientes para guardar el pedido.
 
-**1. Abrir la terminal en la carpeta del proyecto:**
-```
-cd "c:\Users\Usuario\Documents\trabajos U\java"
-```
+### 2. Deshacer (Undo)
+Elimina temporalmente el último pedido realizado.
 
-**2. Compilar todos los archivos Java:**
+### 3. Rehacer (Redo)
+Recupera un pedido que fue deshecho anteriormente.
+
+### 4. Mostrar Pedido Actual
+Muestra el pedido que se encuentra en el tope de la pila.
+
+### 0. Salir
+Cierra el sistema.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **Java**
+- **Programación Orientada a Objetos (POO)**
+- **Lista Ligada**
+- **Pila Manual (Stack)**
+- **Visual Studio Code**
+
+---
+
+## 📂 Estructura del proyecto
+
+El proyecto está compuesto por las siguientes clases:
+
+### `Main.java`
+Clase principal del sistema. Contiene el menú interactivo y permite ejecutar las funciones del programa.
+
+### `Pizza.java`
+Representa una pizza con nombre e ingredientes.
+
+### `Nodo.java`
+Representa un nodo de la lista ligada.
+
+### `PilaManual.java`
+Implementa una pila manual usando nodos enlazados.
+
+### `GestionPedidos.java`
+Gestiona los pedidos y controla las acciones de deshacer y rehacer.
+
+---
+
+## ▶️ Instrucciones de ejecución
+
+### 1. Clonar el repositorio
+
 ```bash
-javac Pizza.java Nodo.java PilaManual.java GestionPedidos.java Main.java
+git clone URL_DEL_REPOSITORIO
 ```
 
-**3. Ejecutar el programa:**
+### 2. Abrir el proyecto
+
+Abrir la carpeta del proyecto en **Visual Studio Code** o cualquier IDE compatible con Java.
+
+### 3. Compilar el programa
+
+Desde la terminal ejecutar:
+
+```bash
+javac *.java
+```
+
+### 4. Ejecutar el programa
+
+Ejecutar el archivo principal con el siguiente comando:
+
 ```bash
 java Main
 ```
 
 ---
 
-## 🎮 Opciones del Menú
+## 📸 Capturas de pantalla
 
-| Opción | Acción | Operación interna |
-|--------|--------|-------------------|
-| `1` | Registrar Pizza | `push()` en pila principal |
-| `2` | Deshacer (Undo) | `pop()` principal → `push()` secundaria |
-| `3` | Rehacer (Redo) | `pop()` secundaria → `push()` principal |
-| `4` | Mostrar Pedido Actual | `peek()` de pila principal |
-| `0` | Salir | — |
+### Menú principal
+
+_Agregar captura aquí_
+
+![Captura menú](ruta-imagen)
 
 ---
 
-## 🏗️ Arquitectura del Sistema (Dos Pilas)
+### Registro de pizza
 
-```
-REGISTRAR:    [Pizza] ──push()──▶ [PILA PRINCIPAL]
+_Agregar captura aquí_
 
-DESHACER:     [PILA PRINCIPAL] ──pop()──▶ [Pizza] ──push()──▶ [PILA SECUNDARIA]
-
-REHACER:      [PILA SECUNDARIA] ──pop()──▶ [Pizza] ──push()──▶ [PILA PRINCIPAL]
-```
+![Captura registro](ruta-imagen)
 
 ---
 
-## 📸 Capturas de consola
+### Función deshacer (Undo)
 
-> *(Agregar capturas de pantalla aquí después de ejecutar el programa)*
+_Agregar captura aquí_
 
----
-
-## 🎥 Video de Sustentación
-
-> *(Agregar enlace al video de YouTube / Drive / GitHub aquí)*
-> 
-> El video incluye:
-> - Presentación formal del estudiante
-> - Explicación de los métodos `push()` y `pop()` implementados manualmente
-> - Demostración del ciclo: **Registro → Deshacer → Rehacer**
+![Captura undo](ruta-imagen)
 
 ---
 
-## 👨‍🎓 Autores
+### Función rehacer (Redo)
 
-- Nombre del estudiante / grupo
+_Agregar captura aquí_
+
+![Captura redo](ruta-imagen)
+
+---
+
+### Mostrar pedido actual
+
+_Agregar captura aquí_
+
+![Captura pedido](ruta-imagen)
+
+---
+
+## 🎥 Video de sustentación
+
+Enlace al video de explicación del proyecto:
+
+**Link del video:**  
+_Pegar enlace aquí_
+
+---
+
+## 👨‍💻 Autor
+
+**Nombre:** Yeison Villada Sánchez
