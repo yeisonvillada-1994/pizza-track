@@ -1,123 +1,119 @@
-/**
- * Clase GestionPedidos - Sistema de control Undo/Redo con Dos Pilas
- *
- * Coordina dos pilas manuales para implementar el flujo de pedidos:
- *
- *   PILA PRINCIPAL  (Undo)  -> Almacena los pedidos activos
- *   PILA SECUNDARIA (Redo)  -> Almacena los pedidos deshechos temporalmente
- *
- * Flujo del sistema:
- *
- *   Registrar: pizza -> [push] -> Pila Principal
- *
- *   Deshacer:  Pila Principal -> [pop] -> pizza -> [push] -> Pila Secundaria
- *
- *   Rehacer:   Pila Secundaria -> [pop] -> pizza -> [push] -> Pila Principal
- *
- * IMPORTANTE: Al registrar un nuevo pedido, la pila secundaria se limpia,
- * ya que el historial de redo queda invalidado.
- */
+// Clase para manejar pedidos usando pilas
 public class GestionPedidos {
 
-    // Pila Principal: almacena los pedidos activos (permite Deshacer)
+    // Guarda los pedidos activos
     private PilaManual pilaPrincipal;
 
-    // Pila Secundaria: almacena pedidos deshechos (permite Rehacer)
+    // Guarda pedidos deshechos
     private PilaManual pilaSecundaria;
 
-    /**
-     * Constructor: inicializa ambas pilas vacías.
-     */
+    // Constructor de la clase
     public GestionPedidos() {
+
+        // Crear pila principal
         this.pilaPrincipal = new PilaManual();
+
+        // Crear pila secundaria
         this.pilaSecundaria = new PilaManual();
     }
 
-    /**
-     * REGISTRAR PEDIDO - Agrega una pizza a la pila principal.
-     *
-     * Al registrar un nuevo pedido, se limpia la pila secundaria
-     * porque el historial de "Rehacer" ya no es válido.
-     *
-     * @param pizza Objeto Pizza a registrar
-     */
+    // Registrar un pedido nuevo
     public void registrarPedido(Pizza pizza) {
+
+        // Agregar pizza a la pila principal
         pilaPrincipal.push(pizza);
 
-        // Limpiar pila secundaria: nuevo pedido invalida el historial de redo
+        // Limpiar pedidos deshechos
         limpiarPilaSecundaria();
 
+        // Mostrar mensaje
         System.out.println("\n✅ Pedido registrado: " + pizza);
     }
 
-    /**
-     * DESHACER (Undo) - Elimina el último pedido y lo mueve a pila secundaria.
-     *
-     * Toma el tope de la pila principal con pop() y lo empuja (push)
-     * a la pila secundaria para posible recuperación.
-     */
+    // Deshacer el último pedido
     public void deshacer() {
+
+        // Revisar si no hay pedidos
         if (pilaPrincipal.isEmpty()) {
-            System.out.println("\n⚠️  No hay pedidos para deshacer.");
+
+            // Mostrar advertencia
+            System.out.println("\n⚠️ No hay pedidos para deshacer.");
             return;
         }
 
-        // Mover el tope de pila principal a pila secundaria
+        // Sacar el último pedido
         Pizza pizzaDeshecha = pilaPrincipal.pop();
+
+        // Guardar pedido deshecho
         pilaSecundaria.push(pizzaDeshecha);
 
-        System.out.println("\n↩️  Pedido deshecho: " + pizzaDeshecha);
+        // Mostrar mensaje
+        System.out.println("\n↩️ Pedido deshecho: " + pizzaDeshecha);
     }
 
-    /**
-     * REHACER (Redo) - Recupera el último pedido deshecho.
-     *
-     * Toma el tope de la pila secundaria con pop() y lo empuja (push)
-     * de vuelta a la pila principal.
-     */
+    // Recuperar un pedido deshecho
     public void rehacer() {
+
+        // Revisar si hay pedidos para recuperar
         if (pilaSecundaria.isEmpty()) {
-            System.out.println("\n⚠️  No hay pedidos para rehacer.");
+
+            // Mostrar advertencia
+            System.out.println("\n⚠️ No hay pedidos para rehacer.");
             return;
         }
 
-        // Mover el tope de pila secundaria de vuelta a pila principal
+        // Sacar pedido de la pila secundaria
         Pizza pizzaRecuperada = pilaSecundaria.pop();
+
+        // Regresar pedido a la pila principal
         pilaPrincipal.push(pizzaRecuperada);
 
-        System.out.println("\n↪️  Pedido rehecho: " + pizzaRecuperada);
+        // Mostrar mensaje
+        System.out.println("\n↪️ Pedido rehecho: " + pizzaRecuperada);
     }
 
-    /**
-     * MOSTRAR PEDIDO ACTUAL - Usa peek() para ver el pedido en producción.
-     * No retira la pizza de la pila, solo la consulta.
-     */
+    // Mostrar pedido actual
     public void mostrarPedidoActual() {
+
+        // Obtener pedido actual
         Pizza actual = pilaPrincipal.peek();
+
+        // Revisar si no hay pedidos
         if (actual == null) {
-            System.out.println("\n📋 No hay ningún pedido activo en este momento.");
+
+            // Mostrar mensaje
+            System.out.println("\n📋 No hay pedidos activos.");
+
         } else {
-            System.out.println("\n📋 Pedido actual en producción: " + actual);
+
+            // Mostrar pedido actual
+            System.out.println("\n📋 Pedido actual: " + actual);
         }
     }
 
-    /**
-     * Muestra el estado completo de ambas pilas para depuración/visualización.
-     */
+    // Mostrar el contenido de las pilas
     public void mostrarEstadoPilas() {
-        System.out.println("\n--- Estado de la Pila Principal (Pedidos Activos) ---");
+
+        // Mostrar pedidos activos
+        System.out.println("\n--- Pedidos Activos ---");
+
+        // Mostrar pila principal
         pilaPrincipal.mostrarTodos();
 
-        System.out.println("--- Estado de la Pila Secundaria (Pedidos Deshechos) ---");
+        // Mostrar pedidos deshechos
+        System.out.println("--- Pedidos Deshechos ---");
+
+        // Mostrar pila secundaria
         pilaSecundaria.mostrarTodos();
     }
 
-    /**
-     * Vacía la pila secundaria haciendo pop() de todos sus elementos.
-     * Se llama cuando un nuevo pedido invalida el historial de redo.
-     */
+    // Limpiar pila secundaria
     private void limpiarPilaSecundaria() {
+
+        // Repetir mientras tenga datos
         while (!pilaSecundaria.isEmpty()) {
+
+            // Eliminar elementos
             pilaSecundaria.pop();
         }
     }
