@@ -1,52 +1,57 @@
-/**
- * Clase Pizza - Modelo de datos del sistema Pizza-Track
- * 
- * Representa un pedido de pizza con nombre e ingredientes.
- * Utiliza un arreglo fijo de tamaño 3 para almacenar ingredientes,
- * tal como lo exige la actividad.
- */
+// Clase para representar una pizza
 public class Pizza {
 
-    // Atributos del objeto Pizza
+    // Guardar nombre de la pizza
     private String nombre;
-    private String[] ingredientes; // Arreglo fijo de tamaño 3 (obligatorio)
 
-    /**
-     * Constructor de Pizza.
-     * Recibe el nombre y un arreglo de exactamente 3 ingredientes.
-     *
-     * @param nombre       Nombre de la pizza (ej: "Margarita")
-     * @param ingredientes Arreglo de 3 ingredientes
-     */
+    // Guardar ingredientes
+    private String[] ingredientes;
+
+    // Constructor de la pizza
     public Pizza(String nombre, String[] ingredientes) {
+
+        // Guardar nombre
         this.nombre = nombre;
 
-        // Se garantiza que el arreglo siempre tenga tamaño fijo de 3
+        // Crear arreglo de 3 posiciones
         this.ingredientes = new String[3];
+
+        // Recorrer posiciones del arreglo
         for (int i = 0; i < 3; i++) {
+
+            // Revisar si existe ingrediente
             if (i < ingredientes.length) {
+
+                // Guardar ingrediente
                 this.ingredientes[i] = ingredientes[i];
+
             } else {
-                this.ingredientes[i] = "N/A"; // Relleno si no se proporcionan 3
+
+                // Rellenar espacio vacío
+                this.ingredientes[i] = "N/A";
             }
         }
     }
 
-    // Getters
+    // Obtener nombre de la pizza
     public String getNombre() {
+
+        // Retornar nombre
         return nombre;
     }
 
+    // Obtener ingredientes
     public String[] getIngredientes() {
+
+        // Retornar ingredientes
         return ingredientes;
     }
 
-    /**
-     * Representación en texto del pedido de pizza.
-     * Muestra nombre e ingredientes en un formato legible para consola.
-     */
+    // Convertir objeto a texto
     @Override
     public String toString() {
+
+        // Mostrar información de la pizza
         return "Pizza: " + nombre
                 + " | Ingredientes: ["
                 + ingredientes[0] + ", "
