@@ -2,11 +2,9 @@
 
 ## Descripción del proyecto
 
-Pizza-Track es un programa realizado en Java que permite gestionar pedidos de pizza usando una estructura de datos tipo **Pila (Stack)** implementada manualmente mediante una **lista ligada**, sin usar `java.util.Stack`.
+Pizza-Track es un programa realizado en Java que permite gestionar pedidos de pizza usando una estructura de datos tipo **Pila** implementada manualmente mediante una **lista ligada**, sin usar `java.util.Stack`.
 
 El sistema permite registrar pedidos, deshacer pedidos eliminados temporalmente, rehacer pedidos recuperados y mostrar el pedido actual.
-
-Este proyecto fue desarrollado como práctica para aplicar conceptos de programación orientada a objetos, arreglos, pilas y listas ligadas en Java.
 
 ---
 
@@ -17,7 +15,7 @@ El objetivo de este proyecto es implementar un sistema de gestión de pedidos de
 - Clases y objetos
 - Arreglos
 - Listas ligadas
-- Pilas (Stack)
+- Pilas
 - Métodos
 - Constructores
 - Encapsulamiento
@@ -59,7 +57,7 @@ Cierra el sistema.
 - **Java**
 - **Programación Orientada a Objetos (POO)**
 - **Lista Ligada**
-- **Pila Manual (Stack)**
+- **Pila Manual**
 - **Visual Studio Code**
 
 ---
