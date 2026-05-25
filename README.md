@@ -117,15 +117,11 @@ java Main
 
 ### Menú principal
 
-<h2>Menú principal</h2>
-
 <img src="captura 1.png" width="700">
 
 ---
 
 ### Registro de pizza
-
-<h2>Registro de pizza</h2>
 
 <img src="Captura 2.png" width="700">
 
@@ -133,23 +129,17 @@ java Main
 
 ### Función deshacer (Undo)
 
-<h2>Función deshacer (Undo)</h2>
-
 <img src="Captura menu 2.png" width="700">
 
 ---
 
 ### Función rehacer (Redo)
 
-<h2>Función rehacer (Redo)</h2>
-
 <img src="Captura menu 3.png" width="700">
 
 ---
 
 ### Mostrar pedido actual
-
-<h2>Mostrar pedido actual</h2>
 
 <img src="Captura menu 4.png" width="700">
 
