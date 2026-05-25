@@ -150,7 +150,7 @@ java Main
 Enlace al video de explicación del proyecto:
 
 **Link del video:**  
-(https://drive.google.com/file/d/1G4TCRpZO6LsNT7rjMvFkgwqw3H-VSA1d/view?usp=sharing)
+https://drive.google.com/file/d/1G4TCRpZO6LsNT7rjMvFkgwqw3H-VSA1d/view?usp=sharing
 
 ---
 
